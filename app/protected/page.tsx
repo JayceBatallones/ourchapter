@@ -1,43 +1,87 @@
 import { redirect } from "next/navigation";
-
 import { createClient } from "@/lib/supabase/server";
-import { InfoIcon } from "lucide-react";
-import { FetchDataSteps } from "@/components/tutorial/fetch-data-steps";
+import { ProfileForm } from "@/components/profile-form";
+import { ProjectsList } from "@/components/projects-list";
+import { MemberProfile, Project } from "@/lib/types";
 import { Suspense } from "react";
 
-async function UserDetails() {
+async function ProtectedContent() {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.getClaims();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (error || !data?.claims) {
+  if (!user) {
     redirect("/auth/login");
   }
 
-  return JSON.stringify(data.claims, null, 2);
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+  const { data: projects } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("profile_id", user.id)
+    .order("created_at", { ascending: true });
+
+  const memberProfile: MemberProfile = {
+    id: user.id,
+    full_name: profile?.full_name ?? null,
+    username: profile?.username ?? null,
+    bio: profile?.bio ?? null,
+    what_building: profile?.what_building ?? null,
+    website: profile?.website ?? null,
+    twitter: profile?.twitter ?? null,
+    linkedin: profile?.linkedin ?? null,
+    github: profile?.github ?? null,
+    instagram: profile?.instagram ?? null,
+    youtube: profile?.youtube ?? null,
+    tiktok: profile?.tiktok ?? null,
+  };
+
+  return (
+    <div className="flex-1 w-full flex flex-col gap-12">
+      <section>
+        <div className="flex items-center gap-2 mb-6">
+          <div className="w-6 h-px bg-white/30" />
+          <h1 className="text-xs font-mono font-bold text-white/60 tracking-[0.2em] uppercase">
+            Your Profile
+          </h1>
+        </div>
+        <ProfileForm profile={memberProfile} />
+      </section>
+
+      <div className="w-full h-px bg-white/10" />
+
+      <section>
+        <div className="flex items-center gap-2 mb-6">
+          <div className="w-6 h-px bg-white/30" />
+          <h2 className="text-xs font-mono font-bold text-white/60 tracking-[0.2em] uppercase">
+            Your Projects
+          </h2>
+        </div>
+        <ProjectsList
+          profileId={user.id}
+          initialProjects={(projects as Project[]) ?? []}
+        />
+      </section>
+    </div>
+  );
 }
 
 export default function ProtectedPage() {
   return (
-    <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
-        <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
-          <InfoIcon size="16" strokeWidth={2} />
-          This is a protected page that you can only see as an authenticated
-          user
+    <Suspense
+      fallback={
+        <div className="flex-1 w-full flex items-center justify-center">
+          <p className="text-muted-foreground text-sm font-mono">Loading...</p>
         </div>
-      </div>
-      <div className="flex flex-col gap-2 items-start">
-        <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          <Suspense>
-            <UserDetails />
-          </Suspense>
-        </pre>
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl mb-4">Next steps</h2>
-        <FetchDataSteps />
-      </div>
-    </div>
+      }
+    >
+      <ProtectedContent />
+    </Suspense>
   );
 }
