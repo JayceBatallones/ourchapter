@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Our Chapter | Just F*ckin Ship",
   description:
     "A builder community for people using Claude Code, OpenClaw, and AI tools to ship products and bet on themselves.",
+  icons: {
+    icon: [{ url: "/icon?v=oc-1", type: "image/png" }],
+    shortcut: [{ url: "/icon?v=oc-1" }],
+    apple: [{ url: "/icon?v=oc-1" }],
+  },
 };
 
 const geistSans = Geist({
