@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { MemberNodes } from "@/components/member-nodes";
 import { PixelLogo } from "@/components/pixel-logo";
+import { SectionHighlighter } from "@/components/section-highlighter";
 import { createClient } from "@/lib/supabase/server";
 import { MemberWithProjects } from "@/lib/types";
 
@@ -16,7 +17,8 @@ async function MemberNodesLoader() {
       .eq("status", "approved"),
     supabase
       .from("profiles")
-      .select("*", { count: "exact", head: true }),
+      .select("*", { count: "exact", head: true })
+      .eq("status", "approved"),
   ]);
 
   const members: MemberWithProjects[] = (profilesResult.data ?? []).map((d) => ({
@@ -29,8 +31,17 @@ async function MemberNodesLoader() {
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black">
+      <SectionHighlighter
+        sections={[
+          { id: "hero", label: "Hero" },
+          { id: "about", label: "What" },
+          { id: "why", label: "Why" },
+          { id: "not-for", label: "Not For" },
+        ]}
+      />
+
       {/* Top Header */}
-      <header className="absolute top-0 left-0 right-0 z-20 border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-40 border-b border-white/10 bg-black/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3 lg:py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 lg:gap-4">
             <PixelLogo className="h-3 sm:h-4 w-auto text-white" />
@@ -69,7 +80,7 @@ export default function Home() {
       <div className="absolute bottom-0 right-0 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-r-2 border-white/20 z-20" />
 
       {/* Hero Section */}
-      <section className="relative z-10 flex min-h-screen items-center pt-16 lg:pt-0">
+      <section id="hero" className="relative z-10 flex min-h-screen items-center pt-16 lg:pt-20">
         <div className="w-full lg:w-1/2 px-6 lg:px-16 lg:pl-[8%]">
           <div className="max-w-lg">
             {/* Top decorative line */}
@@ -160,57 +171,201 @@ export default function Home() {
         id="about"
         className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-32"
       >
-        <div className="max-w-2xl mx-auto space-y-6">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-px bg-white/40" />
-            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
-              About
-            </p>
+        <div className="max-w-4xl mx-auto">
+          <div className="relative border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
+            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/40" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/40" />
+
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-6 h-px bg-white/40" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
+                About
+              </p>
+              <div className="flex-1 h-px bg-white/15" />
+              <span className="text-[9px] font-mono text-white/30">SHIP &gt; TALK</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
+              WHAT IS OUR
+              <br />
+              CHAPTER?
+            </h2>
+
+            <div className="mt-5 space-y-4 text-gray-400 text-sm leading-relaxed font-mono max-w-2xl">
+              <p>
+                We&apos;re the people who stopped waiting for permission. Builders using
+                Claude Code, Open Code, Cursor, and OpenClaw, and whatever else gets
+                the job done — shipping products,
+                breaking things, and betting on ourselves.
+              </p>
+              <p>
+                No pitch decks. No &quot;thought leadership.&quot; No posting threads about AI
+                while never building anything. This is a community for people who
+                actually do the work.
+              </p>
+              <p>
+                Share what you&apos;re building, get raw feedback, find collaborators who
+                move at your speed. That&apos;s it.
+              </p>
+            </div>
+
+            <ul className="mt-7 grid gap-3 sm:grid-cols-3 text-gray-300 text-sm leading-relaxed font-mono">
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Ship logs over status updates.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Raw feedback over polite noise.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Execution speed over endless debate.</li>
+            </ul>
           </div>
+        </div>
+      </section>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
-            WHAT IS OUR
-            <br />
-            CHAPTER?
-          </h2>
+      {/* Why Section */}
+      <section
+        id="why"
+        className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-16 lg:pb-20"
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="relative border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
+            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/40" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/40" />
 
-          <div className="space-y-4 text-gray-400 text-sm leading-relaxed font-mono">
-            <p>
-              We&apos;re the people who stopped waiting for permission.
-              Builders using Claude Code, OpenClaw, Opencode, Cursor, and whatever else
-              gets the job done — shipping products, breaking things, and
-              betting on ourselves.
-            </p>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-6 h-px bg-white/40" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
+                Why
+              </p>
+              <div className="flex-1 h-px bg-white/15" />
+              <span className="text-[9px] font-mono text-white/30">SIGNAL &gt; NOISE</span>
+            </div>
 
-            <p>
-              No pitch decks. No &quot;thought leadership.&quot; No posting
-              threads about AI while never building anything. This is a
-              community for people who actually do the work.
-            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
+              WHY THIS
+              <br />
+              EXISTS
+            </h2>
 
-            <p>
-              Share what you&apos;re building, get raw feedback, find
-              collaborators who move at your speed. That&apos;s it.
-            </p>
+            <div className="mt-5 space-y-4 text-gray-400 text-sm leading-relaxed font-mono max-w-2xl">
+              <p>
+                The best builders still don&apos;t know the other best builders yet.
+                Most spaces are either passive, noisy, or already stale.
+              </p>
+              <p>We built this for people who want signal, speed, and serious momentum.</p>
+            </div>
+
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2 text-gray-300 text-sm leading-relaxed font-mono">
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Hungry builders shipping now, not someday.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">People convinced this is the best time to build.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Operators who stay ahead instead of chasing trends.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Future-leaning optimists, not doom merchants.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40 sm:col-span-2">Thoughtful, high-context discussion from people in the arena.</li>
+            </ul>
           </div>
+        </div>
+      </section>
 
-          <div className="pt-2">
+      {/* Not For Section */}
+      <section
+        id="not-for"
+        className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-24 lg:pb-32"
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="relative border border-white/15 bg-white/[0.01] px-5 py-8 lg:px-10 lg:py-10">
+            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/40" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/40" />
+
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-6 h-px bg-white/40" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
+                Not For
+              </p>
+              <div className="flex-1 h-px bg-white/15" />
+              <span className="text-[9px] font-mono text-white/30">NO SPECTATORS</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
+              WHO IS OUR
+              <br />
+              CHAPTER NOT FOR?
+            </h2>
+
+            <ul className="mt-7 space-y-2 text-gray-300 text-sm leading-relaxed font-mono">
+              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="mt-0.5 text-white/50">[x]</span>
+                <span>
+                  <span className="text-white/85">Passive motivation seekers.</span>{" "}
+                  <span className="text-gray-400">You&apos;ll be frustrated here because this room rewards output, not vibes.</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="mt-0.5 text-white/50">[x]</span>
+                <span>
+                  <span className="text-white/85">Trend chasers switching lanes weekly.</span>{" "}
+                  <span className="text-gray-400">Momentum compounds here, and constant pivots break trust and progress.</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="mt-0.5 text-white/50">[x]</span>
+                <span>
+                  <span className="text-white/85">Default cynics.</span>{" "}
+                  <span className="text-gray-400">Healthy skepticism helps; reflexive negativity kills experimentation.</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="mt-0.5 text-white/50">[x]</span>
+                <span>
+                  <span className="text-white/85">Personal brand first, product second builders.</span>{" "}
+                  <span className="text-gray-400">This community is for shipping substance, not farming attention.</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="mt-0.5 text-white/50">[x]</span>
+                <span>
+                  <span className="text-white/85">People who prefer noise over honest feedback.</span>{" "}
+                  <span className="text-gray-400">Direct critique is the product, and it only works when people want the truth.</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-20 lg:pb-24">
+        <div className="max-w-4xl mx-auto border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+            <div className="space-y-3">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
+                Final Call
+              </p>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-wider font-mono leading-tight">
+                READY TO BUILD WITH
+                <br />
+                PEOPLE WHO SHIP?
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed font-mono max-w-xl">
+                If you want signal, speed, and serious builders in your corner,
+                apply to join Our Chapter.
+              </p>
+            </div>
+
             <Link
               href="/auth/sign-up"
-              className="inline-block px-6 py-2.5 bg-white text-black font-mono text-xs tracking-wider hover:bg-white/90 transition-all duration-200"
+              className="inline-block px-6 py-2.5 bg-white text-black font-mono text-xs tracking-wider hover:bg-white/90 transition-all duration-200 text-center"
             >
-              APPLY NOW
+              APPLY FOR MEMBERSHIP
             </Link>
           </div>
         </div>
       </section>
 
       {/* Bottom Footer */}
-      <footer className="relative z-20 border-t border-white/10 bg-black/60 backdrop-blur-sm">
+      <footer
+        id="footer"
+        className="relative z-20 border-t border-white/10 bg-black/60 backdrop-blur-sm"
+      >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-2 lg:py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 lg:gap-6 text-[8px] lg:text-[9px] font-mono text-white/30">
-            <span className="hidden lg:inline">SYSTEM.ACTIVE</span>
-            <span className="lg:hidden">SYS.ACT</span>
+            <span className="hidden lg:inline">OUR CHAPTER</span>
+            <span className="lg:hidden">OURCHPTR</span>
             <div className="hidden lg:flex gap-1">
               {[10, 6, 14, 8, 12, 5, 15, 9].map((h, i) => (
                 <div
@@ -220,17 +375,17 @@ export default function Home() {
                 />
               ))}
             </div>
-            <span>V1.0.0</span>
+            <span>EST. 2026</span>
           </div>
 
           <div className="flex items-center gap-2 lg:gap-4 text-[8px] lg:text-[9px] font-mono text-white/30">
-            <span className="hidden lg:inline">&cir; RENDERING</span>
+            <span className="hidden lg:inline">MEMBERS ONLINE</span>
             <div className="flex gap-1">
               <div className="w-1 h-1 bg-white/50 rounded-full status-dot" />
               <div className="w-1 h-1 bg-white/30 rounded-full status-dot" />
               <div className="w-1 h-1 bg-white/15 rounded-full status-dot" />
             </div>
-            <span className="hidden lg:inline">FRAME: &infin;</span>
+            <span className="hidden lg:inline">APPLY NOW</span>
           </div>
         </div>
       </footer>
