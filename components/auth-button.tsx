@@ -19,23 +19,23 @@ export async function AuthButton() {
   }
 
   return user ? (
-    <div className="flex items-center gap-4">
-      <span className="text-xs font-mono text-white/50">
+    <div className="flex items-center justify-end gap-2 sm:gap-4 min-w-0">
+      <span className="text-[10px] sm:text-xs font-mono text-white/50 max-w-[8rem] sm:max-w-[14rem] truncate">
         {displayName || user.email}
       </span>
       <LogoutButton />
     </div>
   ) : (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 sm:gap-3">
       <Link
         href="/auth/login"
-        className="text-xs font-mono text-white/50 hover:text-white transition-colors tracking-wider"
+        className="text-[10px] sm:text-xs font-mono text-white/50 hover:text-white transition-colors tracking-wider"
       >
         LOGIN
       </Link>
       <Link
         href="/auth/sign-up"
-        className="px-4 py-1.5 text-xs font-mono text-white border border-white/30 hover:bg-white hover:text-black transition-all duration-200 tracking-wider"
+        className="px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-mono text-white border border-white/30 hover:bg-white hover:text-black transition-all duration-200 tracking-wider"
       >
         APPLY
       </Link>

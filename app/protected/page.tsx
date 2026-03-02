@@ -43,9 +43,9 @@ async function ProtectedContent() {
   };
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-12">
+    <div className="flex-1 w-full flex flex-col gap-8 sm:gap-12">
       <section>
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-4 sm:mb-6">
           <div className="w-6 h-px bg-white/30" />
           <h1 className="text-xs font-mono font-bold text-white/60 tracking-[0.2em] uppercase">
             Your Profile
@@ -57,7 +57,7 @@ async function ProtectedContent() {
       <div className="w-full h-px bg-white/10" />
 
       <section>
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-4 sm:mb-6">
           <div className="w-6 h-px bg-white/30" />
           <h2 className="text-xs font-mono font-bold text-white/60 tracking-[0.2em] uppercase">
             Your Projects

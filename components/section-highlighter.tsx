@@ -49,6 +49,7 @@ export function SectionHighlighter({ sections }: SectionHighlighterProps) {
     if (!target) {
       return;
     }
+
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 

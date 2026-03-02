@@ -37,6 +37,7 @@ export default function Home() {
           { id: "about", label: "What" },
           { id: "why", label: "Why" },
           { id: "not-for", label: "Not For" },
+          { id: "cta", label: "Apply" },
         ]}
       />
 
@@ -248,7 +249,10 @@ export default function Home() {
                 The best builders still don&apos;t know the other best builders yet.
                 Most spaces are either passive, noisy, or already stale.
               </p>
-              <p>We built this for people who want signal, speed, and serious momentum.</p>
+              <p>
+                We built this for high-agency builders who want signal, speed,
+                serious momentum, and accountability to one another.
+              </p>
             </div>
 
             <ul className="mt-7 grid gap-3 sm:grid-cols-2 text-gray-300 text-sm leading-relaxed font-mono">
@@ -329,7 +333,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-20 lg:pb-24">
+      <section id="cta" className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-20 lg:pb-24">
         <div className="max-w-4xl mx-auto border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div className="space-y-3">
@@ -349,8 +353,10 @@ export default function Home() {
 
             <Link
               href="/auth/sign-up"
-              className="inline-block px-6 py-2.5 bg-white text-black font-mono text-xs tracking-wider hover:bg-white/90 transition-all duration-200 text-center"
+              className="group relative inline-block px-6 py-2.5 bg-white text-black font-mono text-xs tracking-wider hover:bg-white/90 transition-all duration-200 text-center"
             >
+              <span className="hidden lg:block absolute -top-1 -left-1 w-2 h-2 border-t border-l border-white opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="hidden lg:block absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-white opacity-0 group-hover:opacity-100 transition-opacity" />
               APPLY FOR MEMBERSHIP
             </Link>
           </div>

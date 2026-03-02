@@ -224,32 +224,32 @@ otp_expiry = 3600
 
 # Customize confirmation email template
 [auth.email.template.confirmation]
-subject = "Confirm your signup to OURCHAPTER"
+subject = "[OURCHAPTER::AUTH] CONFIRM SIGNUP"
 content_path = "./supabase/templates/confirmation.html"
 
 # Customize invite email template
 [auth.email.template.invite]
-subject = "You are invited to OURCHAPTER"
+subject = "[OURCHAPTER::AUTH] INVITE RECEIVED"
 content_path = "./supabase/templates/invite.html"
 
 # Customize magic link email template
 [auth.email.template.magic_link]
-subject = "Your OURCHAPTER magic link"
+subject = "[OURCHAPTER::AUTH] MAGIC LINK // LOGIN"
 content_path = "./supabase/templates/magic_link.html"
 
 # Customize change email address template
 [auth.email.template.email_change]
-subject = "Confirm your email change"
+subject = "[OURCHAPTER::SECURITY] CONFIRM EMAIL CHANGE"
 content_path = "./supabase/templates/email_change.html"
 
 # Customize reset password template
 [auth.email.template.recovery]
-subject = "Reset your OURCHAPTER password"
+subject = "[OURCHAPTER::SECURITY] PASSWORD RESET REQUEST"
 content_path = "./supabase/templates/recovery.html"
 
 # Customize reauthentication template
 [auth.email.template.reauthentication]
-subject = "Confirm this sensitive action"
+subject = "[OURCHAPTER::SECURITY] REAUTH CODE"
 content_path = "./supabase/templates/reauthentication.html"
 
 # Uncomment to customize notification email template

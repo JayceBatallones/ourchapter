@@ -13,7 +13,7 @@ export default function ProtectedLayout({
     <main className="min-h-screen flex flex-col bg-black">
       {/* Header */}
       <nav className="w-full border-b border-white/10">
-        <div className="max-w-5xl mx-auto flex justify-between items-center px-6 py-3">
+        <div className="max-w-5xl mx-auto flex justify-between items-center gap-3 px-4 sm:px-6 py-3">
           <Link href="/" className="flex items-center">
             <PixelLogo className="h-3 w-auto text-white" />
           </Link>
@@ -26,13 +26,13 @@ export default function ProtectedLayout({
       </nav>
 
       {/* Content */}
-      <div className="flex-1 w-full max-w-5xl mx-auto px-6 py-12">
+      <div className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {children}
       </div>
 
       {/* Footer */}
       <footer className="w-full border-t border-white/10">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <span className="text-[9px] font-mono text-white/30 tracking-wider">
             OUR CHAPTER
           </span>

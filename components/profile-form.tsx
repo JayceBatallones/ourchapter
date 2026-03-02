@@ -182,8 +182,8 @@ export function ProfileForm({ profile }: ProfileFormProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <Button type="submit" disabled={saving}>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+        <Button type="submit" disabled={saving} className="w-full sm:w-auto">
           {saving ? "Saving..." : "Save profile"}
         </Button>
         {message && (

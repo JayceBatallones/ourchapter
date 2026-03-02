@@ -118,7 +118,7 @@ export function ProjectsList({
         </p>
       )}
 
-      <form onSubmit={handleAdd} className="space-y-4 border rounded-lg p-4">
+      <form onSubmit={handleAdd} className="space-y-4 border rounded-lg p-4 sm:p-5">
         <h3 className="text-sm font-medium">Add a project</h3>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
@@ -159,11 +159,16 @@ export function ProjectsList({
             placeholder="What does it do?"
           />
         </div>
-        <div className="flex items-center gap-4">
-          <Button type="submit" variant="outline" disabled={adding}>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <Button
+            type="submit"
+            variant="outline"
+            disabled={adding}
+            className="w-full sm:w-auto"
+          >
             {adding ? "Adding..." : "Add project"}
           </Button>
-          {error && <p className="text-sm text-destructive">{error}</p>}
+          {error && <p className="text-sm text-destructive break-words">{error}</p>}
         </div>
       </form>
     </div>
