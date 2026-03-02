@@ -133,7 +133,7 @@ export function MemberNodes({ members, totalCount }: Props) {
           >
             <div
               className={[
-                "flex items-center justify-center rounded-full border transition-all duration-150 cursor-grab active:cursor-grabbing",
+                "flex items-center justify-center rounded-none lg:rounded-full border transition-all duration-150 cursor-grab active:cursor-grabbing",
                 isActive || isDragging
                   ? "bg-white/20 border-white/40 scale-110"
                   : "bg-white/[0.07] border-white/15",
