@@ -19,7 +19,7 @@ async function ProtectedContent() {
     .from("profiles")
     .select("*")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
   const { data: projects } = await supabase
     .from("projects")

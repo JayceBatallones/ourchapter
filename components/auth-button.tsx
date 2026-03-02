@@ -14,7 +14,7 @@ export async function AuthButton() {
       .from("profiles")
       .select("full_name")
       .eq("id", user.sub)
-      .single();
+      .maybeSingle();
     displayName = profile?.full_name ?? null;
   }
 

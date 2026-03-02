@@ -7,7 +7,7 @@ import { MemberWithProjects } from "@/lib/types";
 
 async function MemberNodesLoader() {
   const supabase = await createClient();
-  const [{ data }, { count }] = await Promise.all([
+  const [profilesResult, countResult] = await Promise.all([
     supabase
       .from("profiles")
       .select(
@@ -19,11 +19,11 @@ async function MemberNodesLoader() {
       .select("*", { count: "exact", head: true }),
   ]);
 
-  const members: MemberWithProjects[] = (data ?? []).map((d) => ({
+  const members: MemberWithProjects[] = (profilesResult.data ?? []).map((d) => ({
     ...d,
     projects: d.projects ?? [],
   }));
-  return <MemberNodes members={members} totalCount={count ?? members.length} />;
+  return <MemberNodes members={members} totalCount={countResult.count ?? members.length} />;
 }
 
 export default function Home() {

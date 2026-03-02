@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh auth:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(\"$HOME/scoop/shims/gh.exe\" auth:*)",
+      "Bash(\"$HOME/scoop/shims/gh.exe\" repo:*)",
+      "Bash(rm:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx next:*)",
+      "Bash(npx supabase:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:phu.dev)",
+      "WebFetch(domain:www.justinphu.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:opencode.ai)",
+      "Bash(npx tsc:*)",
+      "Bash(source:*)",
+      "Bash(node:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}
