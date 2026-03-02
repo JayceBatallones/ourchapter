@@ -222,10 +222,35 @@ otp_expiry = 3600
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
-# Uncomment to customize email template
-# [auth.email.template.invite]
-# subject = "You have been invited"
-# content_path = "./supabase/templates/invite.html"
+# Customize confirmation email template
+[auth.email.template.confirmation]
+subject = "Confirm your signup to OURCHAPTER"
+content_path = "./supabase/templates/confirmation.html"
+
+# Customize invite email template
+[auth.email.template.invite]
+subject = "You are invited to OURCHAPTER"
+content_path = "./supabase/templates/invite.html"
+
+# Customize magic link email template
+[auth.email.template.magic_link]
+subject = "Your OURCHAPTER magic link"
+content_path = "./supabase/templates/magic_link.html"
+
+# Customize change email address template
+[auth.email.template.email_change]
+subject = "Confirm your email change"
+content_path = "./supabase/templates/email_change.html"
+
+# Customize reset password template
+[auth.email.template.recovery]
+subject = "Reset your OURCHAPTER password"
+content_path = "./supabase/templates/recovery.html"
+
+# Customize reauthentication template
+[auth.email.template.reauthentication]
+subject = "Confirm this sensitive action"
+content_path = "./supabase/templates/reauthentication.html"
 
 # Uncomment to customize notification email template
 # [auth.email.notification.password_changed]
