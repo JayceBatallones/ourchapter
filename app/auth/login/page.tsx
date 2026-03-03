@@ -13,7 +13,7 @@ export default function Page() {
           <div className="flex items-center gap-2">
             <div className="w-6 h-px bg-white/20" />
             <span className="text-[10px] font-mono text-white/40 tracking-wider">
-              MEMBER LOGIN
+              MEMBER ACCESS
             </span>
             <div className="w-6 h-px bg-white/20" />
           </div>
