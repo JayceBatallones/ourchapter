@@ -32,6 +32,7 @@ async function ProtectedContent() {
     full_name: profile?.full_name ?? null,
     username: profile?.username ?? null,
     bio: profile?.bio ?? null,
+    location: profile?.location ?? null,
     what_building: profile?.what_building ?? null,
     website: profile?.website ?? null,
     twitter: profile?.twitter ?? null,
@@ -40,6 +41,7 @@ async function ProtectedContent() {
     instagram: profile?.instagram ?? null,
     youtube: profile?.youtube ?? null,
     tiktok: profile?.tiktok ?? null,
+    status: profile?.status ?? null,
   };
 
   return (

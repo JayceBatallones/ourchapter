@@ -281,6 +281,17 @@ function ExpandedCard({
 }
 
 export function MemberNodes({ members, totalCount }: Props) {
+  // Suppress THREE.Clock deprecation warning from @react-three/fiber internals
+  // until fiber migrates to THREE.Timer (https://github.com/pmndrs/react-three-fiber/issues/3153)
+  useEffect(() => {
+    const origWarn = console.warn;
+    console.warn = (...args: unknown[]) => {
+      if (typeof args[0] === "string" && args[0].includes("THREE.Clock")) return;
+      origWarn.apply(console, args);
+    };
+    return () => { console.warn = origWarn; };
+  }, []);
+
   const [expandedMember, setExpandedMember] =
     useState<MemberWithProjects | null>(null);
 

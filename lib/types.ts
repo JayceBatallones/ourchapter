@@ -3,6 +3,7 @@ export type MemberProfile = {
   full_name: string | null;
   username: string | null;
   bio: string | null;
+  location: string | null;
   what_building: string | null;
   website: string | null;
   twitter: string | null;

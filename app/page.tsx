@@ -12,7 +12,7 @@ async function MemberNodesLoader() {
     supabase
       .from("profiles")
       .select(
-        "id, full_name, username, bio, what_building, website, twitter, linkedin, github, instagram, youtube, tiktok, projects(name, url)"
+        "id, full_name, username, bio, location, what_building, website, twitter, linkedin, github, instagram, youtube, tiktok, status, projects(name, url)"
       )
       .eq("status", "approved"),
     supabase

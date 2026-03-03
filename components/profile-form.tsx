@@ -16,6 +16,7 @@ export function ProfileForm({ profile }: ProfileFormProps) {
     full_name: profile.full_name ?? "",
     username: profile.username ?? "",
     bio: profile.bio ?? "",
+    location: profile.location ?? "",
     website: profile.website ?? "",
     twitter: profile.twitter ?? "",
     github: profile.github ?? "",
@@ -48,6 +49,7 @@ export function ProfileForm({ profile }: ProfileFormProps) {
         full_name: formData.full_name || null,
         username: formData.username || null,
         bio: formData.bio || null,
+        location: formData.location || null,
         website: formData.website || null,
         twitter: formData.twitter || null,
         github: formData.github || null,
@@ -90,6 +92,17 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             placeholder="janedoe"
           />
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="location">Location</Label>
+        <Input
+          id="location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          placeholder="Sydney, AU"
+        />
       </div>
 
       <div className="space-y-2">
