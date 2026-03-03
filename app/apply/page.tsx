@@ -15,11 +15,28 @@ async function ApplyContent() {
     redirect("/auth/login");
   }
 
-  const { data: profile } = await supabase
+  let { data: profile } = await supabase
     .from("profiles")
     .select("full_name, username, bio, location, status")
     .eq("id", user.id)
     .maybeSingle();
+
+  // Ensure profile exists (fallback if trigger didn't fire)
+  if (!profile) {
+    const { data: created } = await supabase
+      .from("profiles")
+      .upsert(
+        {
+          id: user.id,
+          email: user.email!,
+          full_name: user.user_metadata?.full_name ?? null,
+        },
+        { onConflict: "id" },
+      )
+      .select("full_name, username, bio, location, status")
+      .single();
+    profile = created;
+  }
 
   if (profile?.status === "approved") {
     redirect("/protected");
