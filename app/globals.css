@@ -202,4 +202,34 @@
   opacity: 0;
 }
 
+/* Globe overlay entrance */
+.globe-overlay-enter {
+  animation: globe-overlay-in 0.2s ease-out forwards;
+}
+
+@keyframes globe-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Globe expanded profile entrance */
+.globe-profile-enter {
+  animation: globe-profile-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes globe-profile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 /* Landing section transition system */
