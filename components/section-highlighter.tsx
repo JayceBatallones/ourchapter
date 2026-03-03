@@ -56,7 +56,7 @@ export function SectionHighlighter({ sections }: SectionHighlighterProps) {
   return (
     <nav
       aria-label="Landing page sections"
-      className="fixed right-4 top-24 z-30 flex flex-col items-end gap-3 lg:top-28"
+      className="fixed right-4 top-24 z-30 hidden flex-col items-end gap-3 lg:flex lg:top-28"
     >
       {sections.map((section) => {
         const active = section.id === activeId;
