@@ -35,7 +35,6 @@ export default function Home() {
         sections={[
           { id: "hero", label: "Hero" },
           { id: "about", label: "What" },
-          { id: "why", label: "Why" },
           { id: "not-for", label: "Not For" },
           { id: "cta", label: "Apply" },
         ]}
@@ -53,11 +52,6 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-4 lg:gap-6">
-            <div className="hidden lg:flex items-center gap-3 text-[10px] font-mono text-white/40">
-              <span>BUILDERS.NETWORK</span>
-              <div className="w-1 h-1 bg-white/30 rounded-full" />
-              <span>V1.0</span>
-            </div>
             <Link
               href="/auth/login"
               className="px-4 py-1.5 text-[10px] lg:text-xs font-mono text-white/60 hover:text-white transition-colors duration-200 tracking-wider"
@@ -113,9 +107,7 @@ export default function Home() {
             {/* Description */}
             <div className="relative animate-fade-up-delay-2">
               <p className="text-sm lg:text-base text-gray-400 mb-6 leading-relaxed font-mono">
-                A private community of builders who use AI to ship real
-                products — not talk about it. No pitch decks.
-                No thought leadership. Just work.
+                A private community of builders shipping real products with AI.
               </p>
 
               {/* Technical corner accent */}
@@ -143,14 +135,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Bottom technical notation */}
-            <div className="hidden lg:flex items-center gap-2 mt-8 opacity-30">
-              <span className="text-white text-[9px] font-mono">&infin;</span>
-              <div className="flex-1 h-px bg-white/40" />
-              <span className="text-white text-[9px] font-mono">
-                CHAPTER.PROTOCOL
-              </span>
-            </div>
           </div>
         </div>
 
@@ -183,7 +167,6 @@ export default function Home() {
                 About
               </p>
               <div className="flex-1 h-px bg-white/15" />
-              <span className="text-[9px] font-mono text-white/30">SHIP &gt; TALK</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
@@ -194,73 +177,20 @@ export default function Home() {
 
             <div className="mt-5 space-y-4 text-gray-400 text-sm leading-relaxed font-mono max-w-2xl">
               <p>
-                We&apos;re the people who stopped waiting for permission. Builders using
-                Claude Code, Open Code, Cursor, and OpenClaw, and whatever else gets
-                the job done — shipping products,
-                breaking things, and betting on ourselves.
+                The best builders don&apos;t know the other best builders yet.
+                Most communities are passive, noisy, or already stale.
               </p>
               <p>
-                No pitch decks. No &quot;thought leadership.&quot; No posting threads about AI
-                while never building anything. This is a community for people who
-                actually do the work.
-              </p>
-              <p>
-                Share what you&apos;re building, get raw feedback, find collaborators who
-                move at your speed. That&apos;s it.
+                This is for high-agency people using AI to ship — not post about it.
+                Share what you&apos;re building, get raw feedback, find collaborators
+                who move at your speed.
               </p>
             </div>
 
             <ul className="mt-7 grid gap-3 sm:grid-cols-3 text-gray-300 text-sm leading-relaxed font-mono">
               <li className="border border-white/10 px-3 py-2 bg-black/40">Ship logs over status updates.</li>
               <li className="border border-white/10 px-3 py-2 bg-black/40">Raw feedback over polite noise.</li>
-              <li className="border border-white/10 px-3 py-2 bg-black/40">Execution speed over endless debate.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Section */}
-      <section
-        id="why"
-        className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-16 lg:pb-20"
-      >
-        <div className="max-w-4xl mx-auto">
-          <div className="relative border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/40" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/40" />
-
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-px bg-white/40" />
-              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
-                Why
-              </p>
-              <div className="flex-1 h-px bg-white/15" />
-              <span className="text-[9px] font-mono text-white/30">SIGNAL &gt; NOISE</span>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
-              WHY THIS
-              <br />
-              EXISTS
-            </h2>
-
-            <div className="mt-5 space-y-4 text-gray-400 text-sm leading-relaxed font-mono max-w-2xl">
-              <p>
-                The best builders still don&apos;t know the other best builders yet.
-                Most spaces are either passive, noisy, or already stale.
-              </p>
-              <p>
-                We built this for high-agency builders who want signal, speed,
-                serious momentum, and accountability to one another.
-              </p>
-            </div>
-
-            <ul className="mt-7 grid gap-3 sm:grid-cols-2 text-gray-300 text-sm leading-relaxed font-mono">
-              <li className="border border-white/10 px-3 py-2 bg-black/40">Hungry builders shipping now, not someday.</li>
-              <li className="border border-white/10 px-3 py-2 bg-black/40">People convinced this is the best time to build.</li>
-              <li className="border border-white/10 px-3 py-2 bg-black/40">Operators who stay ahead instead of chasing trends.</li>
-              <li className="border border-white/10 px-3 py-2 bg-black/40">Future-leaning optimists, not doom merchants.</li>
-              <li className="border border-white/10 px-3 py-2 bg-black/40 sm:col-span-2">Thoughtful, high-context discussion from people in the arena.</li>
+              <li className="border border-white/10 px-3 py-2 bg-black/40">Speed over endless debate.</li>
             </ul>
           </div>
         </div>
@@ -282,50 +212,34 @@ export default function Home() {
                 Not For
               </p>
               <div className="flex-1 h-px bg-white/15" />
-              <span className="text-[9px] font-mono text-white/30">NO SPECTATORS</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-wider font-mono leading-tight">
-              WHO IS OUR
+              NOT FOR
               <br />
-              CHAPTER NOT FOR?
+              EVERYONE.
             </h2>
 
-            <ul className="mt-7 space-y-2 text-gray-300 text-sm leading-relaxed font-mono">
-              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
-                <span className="mt-0.5 text-white/50">[x]</span>
-                <span>
-                  <span className="text-white/85">Passive motivation seekers.</span>{" "}
-                  <span className="text-gray-400">You&apos;ll be frustrated here because this room rewards output, not vibes.</span>
-                </span>
+            <ul className="mt-7 space-y-2 text-white/85 text-sm leading-relaxed font-mono">
+              <li className="flex items-center gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="text-white/50">[x]</span>
+                <span>Passive motivation seekers.</span>
               </li>
-              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
-                <span className="mt-0.5 text-white/50">[x]</span>
-                <span>
-                  <span className="text-white/85">Trend chasers switching lanes weekly.</span>{" "}
-                  <span className="text-gray-400">Momentum compounds here, and constant pivots break trust and progress.</span>
-                </span>
+              <li className="flex items-center gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="text-white/50">[x]</span>
+                <span>Trend chasers switching lanes weekly.</span>
               </li>
-              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
-                <span className="mt-0.5 text-white/50">[x]</span>
-                <span>
-                  <span className="text-white/85">Default cynics.</span>{" "}
-                  <span className="text-gray-400">Healthy skepticism helps; reflexive negativity kills experimentation.</span>
-                </span>
+              <li className="flex items-center gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="text-white/50">[x]</span>
+                <span>Default cynics.</span>
               </li>
-              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
-                <span className="mt-0.5 text-white/50">[x]</span>
-                <span>
-                  <span className="text-white/85">Personal brand first, product second builders.</span>{" "}
-                  <span className="text-gray-400">This community is for shipping substance, not farming attention.</span>
-                </span>
+              <li className="flex items-center gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="text-white/50">[x]</span>
+                <span>Personal brand first, product second.</span>
               </li>
-              <li className="flex items-start gap-3 border border-white/10 px-3 py-2 bg-black/40">
-                <span className="mt-0.5 text-white/50">[x]</span>
-                <span>
-                  <span className="text-white/85">People who prefer noise over honest feedback.</span>{" "}
-                  <span className="text-gray-400">Direct critique is the product, and it only works when people want the truth.</span>
-                </span>
+              <li className="flex items-center gap-3 border border-white/10 px-3 py-2 bg-black/40">
+                <span className="text-white/50">[x]</span>
+                <span>People who prefer noise over honest feedback.</span>
               </li>
             </ul>
           </div>
@@ -337,18 +251,9 @@ export default function Home() {
         <div className="max-w-4xl mx-auto border border-white/15 bg-white/[0.02] px-5 py-8 lg:px-10 lg:py-10">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div className="space-y-3">
-              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
-                Final Call
-              </p>
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-wider font-mono leading-tight">
-                READY TO BUILD WITH
-                <br />
-                PEOPLE WHO SHIP?
+                READY TO BUILD?
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed font-mono max-w-xl">
-                If you want signal, speed, and serious builders in your corner,
-                apply to join Our Chapter.
-              </p>
             </div>
 
             <Link
@@ -385,13 +290,11 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-2 lg:gap-4 text-[8px] lg:text-[9px] font-mono text-white/30">
-            <span className="hidden lg:inline">MEMBERS ONLINE</span>
             <div className="flex gap-1">
               <div className="w-1 h-1 bg-white/50 rounded-full status-dot" />
               <div className="w-1 h-1 bg-white/30 rounded-full status-dot" />
               <div className="w-1 h-1 bg-white/15 rounded-full status-dot" />
             </div>
-            <span className="hidden lg:inline">APPLY NOW</span>
           </div>
         </div>
       </footer>
